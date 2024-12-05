@@ -60,4 +60,4 @@ int main(){
 	printf("\nPostorder \n");
 	postorder(root);
 	return 0;
-}~git
+}
