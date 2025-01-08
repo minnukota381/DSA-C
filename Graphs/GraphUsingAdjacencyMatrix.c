@@ -3,7 +3,7 @@
 
 void addEdge(int adjMatrix[MAX_VERTICES][MAX_VERTICES], int u, int v) {
     adjMatrix[u][v] = 1;
-    adjMatrix[v][u] = 1;  // For undirected graph
+    adjMatrix[v][u] = 1;
 }
 
 void printAdjMatrix(int adjMatrix[MAX_VERTICES][MAX_VERTICES]) {
@@ -18,12 +18,10 @@ void printAdjMatrix(int adjMatrix[MAX_VERTICES][MAX_VERTICES]) {
 int main() {
     int adjMatrix[MAX_VERTICES][MAX_VERTICES] = {0};
 
-    // Adding edges
     addEdge(adjMatrix, 0, 1);
     addEdge(adjMatrix, 0, 2);
     addEdge(adjMatrix, 1, 3);
 
-    // Print the adjacency matrix
     printf("Adjacency Matrix Representation:\n");
     printAdjMatrix(adjMatrix);
 
