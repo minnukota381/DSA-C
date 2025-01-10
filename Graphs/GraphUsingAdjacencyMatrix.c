@@ -21,6 +21,7 @@ int main() {
     addEdge(adjMatrix, 0, 1);
     addEdge(adjMatrix, 0, 2);
     addEdge(adjMatrix, 1, 3);
+    addEdge(adjMatrix, 1, 4);
 
     printf("Adjacency Matrix Representation:\n");
     printAdjMatrix(adjMatrix);
