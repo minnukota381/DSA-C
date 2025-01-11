@@ -30,6 +30,36 @@ void insertAtEnd(struct Node** head, int data) {
     temp->next = newNode;
 }
 
+void insertAtPosition(struct Node** head, int data, int position) {
+    if (position < 1) {
+        printf("Position should be greater than or equal to 1.\n");
+        return;
+    }
+
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    
+    if (position == 1) {
+        newNode->next = *head;
+        *head = newNode;
+        return;
+    }
+
+    struct Node* temp = *head;
+    for (int i = 1; temp != NULL && i < position - 1; i++) {
+        temp = temp->next;
+    }
+
+    if (temp == NULL) {
+        printf("Position exceeds the length of the list.\n");
+        free(newNode);
+        return;
+    }
+
+    newNode->next = temp->next;
+    temp->next = newNode;
+}
+
 void deleteFirstNode(struct Node** head) {
     if (*head == NULL) {
         printf("List is empty.\n");
@@ -60,6 +90,39 @@ void deleteLastNode(struct Node** head) {
 
     free(temp->next);
     temp->next = NULL;
+}
+
+void deleteAtPosition(struct Node** head, int position) {
+    if (*head == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
+
+    if (position < 1) {
+        printf("Position should be greater than or equal to 1.\n");
+        return;
+    }
+
+    if (position == 1) {
+        struct Node* temp = *head;
+        *head = (*head)->next;
+        free(temp);
+        return;
+    }
+
+    struct Node* temp = *head;
+    for (int i = 1; temp != NULL && i < position - 1; i++) {
+        temp = temp->next;
+    }
+
+    if (temp == NULL || temp->next == NULL) {
+        printf("Position exceeds the length of the list.\n");
+        return;
+    }
+
+    struct Node* nodeToDelete = temp->next;
+    temp->next = temp->next->next;
+    free(nodeToDelete);
 }
 
 void traverseList(struct Node* head) {
@@ -107,6 +170,14 @@ int main() {
     insertAtEnd(&head, 40);
 
     printf("List after insertions: ");
+    traverseList(head);
+
+    insertAtPosition(&head, 25, 3);
+    printf("List after inserting 25 at position 3: ");
+    traverseList(head);
+
+    deleteAtPosition(&head, 2);
+    printf("List after deleting node at position 2: ");
     traverseList(head);
 
     deleteFirstNode(&head);
