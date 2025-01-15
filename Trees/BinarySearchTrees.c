@@ -40,6 +40,7 @@ struct node* search(struct node *root, int data) {
     }
 }
 
+// In-order Traversal
 void inorder(struct node *root) {
     if (root == NULL) {
         return;
@@ -48,6 +49,28 @@ void inorder(struct node *root) {
     inorder(root->left);
     printf("%d ", root->data);
     inorder(root->right);
+}
+
+// Pre-order Traversal
+void preorder(struct node *root) {
+    if (root == NULL) {
+        return;
+    }
+    
+    printf("%d ", root->data);
+    preorder(root->left);
+    preorder(root->right);
+}
+
+// Post-order Traversal
+void postorder(struct node *root) {
+    if (root == NULL) {
+        return;
+    }
+    
+    postorder(root->left);
+    postorder(root->right);
+    printf("%d ", root->data);
 }
 
 int main() {
@@ -65,6 +88,14 @@ int main() {
     
     printf("In-order Traversal: ");
     inorder(root);
+    printf("\n");
+    
+    printf("Pre-order Traversal: ");
+    preorder(root);
+    printf("\n");
+    
+    printf("Post-order Traversal: ");
+    postorder(root);
     printf("\n");
     
     printf("Enter value to search: ");
