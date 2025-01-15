@@ -9,7 +9,7 @@ void addEdge(int adjMatrix[MAX_VERTICES][MAX_VERTICES], int u, int v) {
 void printAdjMatrix(int adjMatrix[MAX_VERTICES][MAX_VERTICES]) {
     for (int i = 0; i < MAX_VERTICES; i++) {
         for (int j = 0; j < MAX_VERTICES; j++) {
-            printf("%d ", adjMatrix[i][j]);
+            printf("%d  ", adjMatrix[i][j]);
         }
         printf("\n");
     }
